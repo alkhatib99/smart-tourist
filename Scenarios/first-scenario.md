@@ -1,15 +1,11 @@
 # Implementation First Scenario
 
-## Overview
+## The Actors :
 
-Three types of user(Admin, Agent, Tourist).
-
-The **Admin**, can login without sign up and create account for agent
-
-The **Agent**,
-
-The **Tourist**,
+- **Admin**
+- **Agent**
+- **Tourist**
 
 ## Scenario
 
-The main page will contain an welcome text logo and clickable text, or button `Start` 
+- The main page will contain an welcome text `Welocme To Smart Tourist Guide` and two buttons one for `Login`, and the other for `SignUp`. If click on `SignUp`, the tourist sign up page will appear. Else if click on login should at begin select one of radibuttons `Agent`, `Admin`, `Tourist`, then the edittexts will appear. Fill information and click on login button.

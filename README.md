@@ -2,6 +2,27 @@
 
 Mobile Application On Android Platform, using java.  
 
+## Table Of Content
+
+<!-- TOC -->
+
+- [Smart Tourist](#smart-tourist)
+    - [Table Of Content](#table-of-content)
+    - [Overview](#overview)
+    - [Abstract](#abstract)
+    - [Tools Needed](#tools-needed)
+    - [Implementation Steps Day By Day](#implementation-steps-day-by-day)
+        - [Estimated Time](#estimated-time)
+        - [Day By Day](#day-by-day)
+
+<!-- /TOC -->
+
+## Overview
+
+Guides to create an android application called `Smart Tourist`, thats help the tourist to find trip and keep in touch with agent also the trip details, like see locations will visited and other featuers like login and signup.
+Also the agent can add a trip and fill the details and modify it or delete it and other feature like login withput sign up for the agents. The application provide admin features like create the accounts for agents and delete account ot modify it, other features like login, and track the trips.
+
+
 ---
 
 ## Abstract
@@ -12,19 +33,6 @@ The app is expected to improve the tourist experience when touring in Jordan thr
 
 ---
 
-## Table Of Content
-
-<!-- TOC -->
-
-- [Smart Tourist](#smart-tourist)
-    - [Abstract](#abstract)
-    - [Table Of Content](#table-of-content)
-    - [Tools Needed](#tools-needed)
-    - [Implementation Tracking Day By Day](#implementation-tracking-day-by-day)
-        - [Estimated Time](#estimated-time)
-        - [Day By Day](#day-by-day)
-
-<!-- /TOC -->
 
 ## Tools Needed
 
@@ -34,7 +42,7 @@ The app is expected to improve the tourist experience when touring in Jordan thr
 
 ---
 
-## Implementation Tracking Day By Day
+## Implementation Steps Day By Day
 
 ### Estimated Time
 
@@ -48,6 +56,7 @@ Note: The time period will be split into two sections:
 
 <details>
     <summary>First (9/6/2022 - 12/6/2022)</summary>
+
     Will design the most screens, Login screen and sign up, homeAgent, homeAdmin, homeTourist,...
     The 40% of work should be submitted at this period
 
@@ -55,6 +64,7 @@ Note: The time period will be split into two sections:
 
 <details>
     <summary>Second (13/6/2022 - 22/6/2022)</summary>
+    
     Will implement and test all functionality.
 </details>
 
@@ -84,6 +94,13 @@ Create an project inside the directory using android studio.
 
 write scenario, imagine to how will be implemented, [Implementation First Scenario.](./Scenarios/first-scenario.md).
 
+Sketch an prototyping using pen and paper
+
+- Tourist Prototyping:  
+    - ![' '](./assets/wireframe-prototyping-tourist.jpeg).
+
+- Admin & Agent Prototyping:
+    - ![' '](./assets/wireframe-prototyping-agent-and-admin.jpeg)
 </details>
 
 ---
