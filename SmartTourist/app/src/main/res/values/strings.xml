@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">SmartTourist</string>
+    <string name="Welcome_msg">Welcome To Smart Tourist Guides</string>
+    <string name="email_or_username">Email or Username</string>
+    <string name="login_page">LOGIN PAGE</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="not_registered_yet_click_here">Not Registered Yet!, Click Here</string>
+
 </resources>

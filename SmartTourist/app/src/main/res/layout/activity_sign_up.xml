@@ -4,6 +4,109 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
+    android:backgroundTintMode="screen"
     tools:context=".SignUp">
+
+    <EditText
+        android:id="@+id/username_Input"
+        android:layout_width="267dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/register_editext_style"
+        android:ems="10"
+        android:hint="Username"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_Login" />
+
+    <EditText
+        android:id="@+id/age_Input"
+        android:layout_width="267dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/register_editext_style"
+        android:ems="10"
+        android:hint="Age"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username_Input" />
+
+    <EditText
+        android:id="@+id/sex_Input"
+        android:layout_width="267dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/register_editext_style"
+        android:ems="10"
+        android:hint="Sex, Enter (`M` or `F`)"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/age_Input" />
+
+    <EditText
+        android:id="@+id/nationality_Input"
+        android:layout_width="267dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/register_editext_style"
+        android:ems="10"
+        android:hint="Nationality"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sex_Input" />
+
+    <EditText
+        android:id="@+id/email_Input"
+        android:layout_width="267dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/register_editext_style"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nationality_Input" />
+
+    <EditText
+        android:id="@+id/password_Input"
+        android:layout_width="267dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/register_editext_style"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email_Input" />
+
+    <Button
+        android:id="@+id/signUpBtn"
+        android:layout_width="152dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/register_editext_style"
+        android:text="SIGNUP"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_Input" />
+
+    <TextView
+        android:id="@+id/text_view_Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="128dp"
+        android:fontFamily="@font/bangers_regular"
+        android:text="SIGNUP PAGE"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

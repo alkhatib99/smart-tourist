@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "401780937120",
+    "project_id": "smart-tourist-ad4ff",
+    "storage_bucket": "smart-tourist-ad4ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401780937120:android:59378ddbd26268066814c5",
+        "android_client_info": {
+          "package_name": "com.example.smarttourist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "401780937120-ok9pgqjpuav1u9gamt0garjns6k076f2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRaS7uGiFK_LDO3Y_h2SvxYu6-PkgLKVM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "401780937120-ok9pgqjpuav1u9gamt0garjns6k076f2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
