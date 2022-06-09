@@ -4,67 +4,121 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
+    android:backgroundTintMode="screen"
     tools:context=".Login">
 
     <EditText
         android:id="@+id/email_Input"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="267dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="232dp"
+        android:autofillHints="emailAddress"
         android:background="@drawable/register_editext_style"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="83dp"
-        tools:layout_editor_absoluteY="320dp" />
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.63" />
+        android:ems="10"
+        android:hint="@string/email_or_username"
+        android:inputType="textEmailAddress"
+        android:textColorHint="#3B5D71"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_Login" />
 
     <Button
         android:id="@+id/loginBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="152dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="80dp"
         android:background="@drawable/register_editext_style"
-        android:text="Login"
-        tools:layout_editor_absoluteX="162dp"
-        tools:layout_editor_absoluteY="572dp" />
+        android:text="@string/login"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_Input" />
 
     <TextView
-        android:id="@+id/forgetPass"
+        android:id="@+id/text_view_Login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Forgot Password"
-        tools:layout_editor_absoluteX="152dp"
-        tools:layout_editor_absoluteY="651dp" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4" />
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="160dp"
+        android:fontFamily="@font/bangers_regular"
+        android:text="@string/login_page"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/regLink"
+        android:id="@+id/regLink2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Not Registered Yet!, Click Here"
-        tools:layout_editor_absoluteX="110dp"
-        tools:layout_editor_absoluteY="702dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/not_registered_yet_click_here"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginBtn"
         tools:text="Not Registered Yet!, Click Here" />
 
     <EditText
         android:id="@+id/password_Input"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="267dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="56dp"
+        android:autofillHints="password"
         android:background="@drawable/register_editext_style"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/password"
         android:inputType="textPassword"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="385dp" />
+        android:textColorHint="#3B5D71"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email_Input" />
 
+    <RadioGroup
+        android:id="@+id/radioRoleGroup"
+        android:layout_width="355dp"
+        android:layout_height="129dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:textAlignment="viewStart"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <RadioButton
+            android:id="@+id/adminRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="Admin" />
+
+        <RadioButton
+            android:id="@+id/agentRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="40sp"
+            android:text="Agent" />
+
+        <RadioButton
+            android:id="@+id/touristRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="Tourist" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="206dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/bangers_regular"
+        android:text="Choose the role:"
+        android:textColor="#830000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_Login" />
+
+</android.support.constraint.ConstraintLayout>

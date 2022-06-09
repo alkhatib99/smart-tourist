@@ -113,7 +113,11 @@ Start design the user interface and their logc depend on scenario .
 - Login Screen
     - ![' ']()
 
-    
+- Connect to firebase.
+- Add firebase authentication to app.
+- Add check current auth status.
+
+
 </details>
 
 
