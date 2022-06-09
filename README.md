@@ -94,14 +94,28 @@ Create an project inside the directory using android studio.
 
 write scenario, imagine to how will be implemented, [Implementation First Scenario.](./Scenarios/first-scenario.md).
 
-Sketch an prototyping using pen and paper
+Sketch an prototyping using pen and paper:
 
 - Tourist Prototyping:  
     - ![' '](./assets/wireframe-prototyping-tourist.jpeg).
 
 - Admin & Agent Prototyping:
-    - ![' '](./assets/wireframe-prototyping-agent-and-admin.jpeg)
+    - ![' '](./assets/wireframe-prototyping-agent-and-admin.jpeg).
+ 
+ <br>
+
+Start design the user interface and their logc depend on scenario .
+
+- Main Screen:
+    - ![' ']()
+- Signup Screen
+    - ![' ']()
+- Login Screen
+    - ![' ']()
+
+    
 </details>
+
 
 ---
 
