@@ -2,13 +2,29 @@
 
 Mobile Application On Android Platform, using java.  
 
+---
+
 ## Abstract
 
 The tourism in Jordan  has increased significantly. When tourists come to Jordan they are overwhelmed by the number of touristic places they can go, this makes deciding they’re trip difficult and time consuming.
 Our App will help the tourist decide where to go according to their conditions and provide them with information about the trip they want to go.
 The app is expected to improve the tourist experience when touring in Jordan through providing several facilities.
 
+---
+
 ## Table Of Content
+
+<!-- TOC -->
+
+- [Smart Tourist](#smart-tourist)
+    - [Abstract](#abstract)
+    - [Table Of Content](#table-of-content)
+    - [Tools Needed](#tools-needed)
+    - [Implementation Tracking Day By Day](#implementation-tracking-day-by-day)
+        - [Estimated Time](#estimated-time)
+        - [Day By Day](#day-by-day)
+
+<!-- /TOC -->
 
 ## Tools Needed
 
@@ -16,28 +32,39 @@ The app is expected to improve the tourist experience when touring in Jordan thr
 2- Git.
 3- GitHub.
 
+---
+
 ## Implementation Tracking Day By Day
 
-## Estimated Time 
+### Estimated Time
 
 Time : 14 days.
 
 Start : (9/6/2022).
 
-End: -- .
+End: 22/6/2022.
 
-Note: The time period will be split into two sectioon:
+Note: The time period will be split into two sections:
 
 <details>
     <summary>First (9/6/2022 - 12/6/2022)</summary>
-
     Will design the most screens, Login screen and sign up, homeAgent, homeAdmin, homeTourist,...
     The 40% of work should be submitted at this period
 
 </details>
 
+<details>
+    <summary>Second (13/6/2022 - 22/6/2022)</summary>
+    Will implement and test all functionality.
+</details>
 
-### First Day - Thursday (9/6/2022)
+---
+<br>
+
+### Day By Day
+
+<details>
+<summary> First Day - Thursday (9/6/2022)</summary>
 
 Create a repository on github called [`smart-Tourist`](https://github.com/alkhatib99/smart-tourist).
 
@@ -57,8 +84,9 @@ Create an project inside the directory using android studio.
 
 write scenario, imagine to how will be implemented, [Implementation First Scenario.](./Scenarios/first-scenario.md).
 
+</details>
 
-
+---
 
 
 
