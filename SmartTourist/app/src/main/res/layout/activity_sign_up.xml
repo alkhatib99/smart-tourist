@@ -12,7 +12,7 @@
         android:id="@+id/username_Input"
         android:layout_width="267dp"
         android:layout_height="53dp"
-        android:layout_marginStart="56dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="44dp"
         android:background="@drawable/register_editext_style"
         android:ems="10"
@@ -22,49 +22,23 @@
         app:layout_constraintTop_toBottomOf="@+id/text_view_Login" />
 
     <EditText
-        android:id="@+id/age_Input"
+        android:id="@+id/password_Input"
         android:layout_width="267dp"
         android:layout_height="53dp"
-        android:layout_marginStart="56dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/register_editext_style"
         android:ems="10"
-        android:hint="Age"
-        android:inputType="number"
+        android:hint="Password"
+        android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username_Input" />
-
-    <EditText
-        android:id="@+id/sex_Input"
-        android:layout_width="267dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/register_editext_style"
-        android:ems="10"
-        android:hint="Sex, Enter (`M` or `F`)"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/age_Input" />
-
-    <EditText
-        android:id="@+id/nationality_Input"
-        android:layout_width="267dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/register_editext_style"
-        android:ems="10"
-        android:hint="Nationality"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sex_Input" />
+        app:layout_constraintTop_toBottomOf="@+id/email_Input" />
 
     <EditText
         android:id="@+id/email_Input"
         android:layout_width="267dp"
         android:layout_height="53dp"
-        android:layout_marginStart="56dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/register_editext_style"
         android:ems="10"
@@ -74,17 +48,43 @@
         app:layout_constraintTop_toBottomOf="@+id/nationality_Input" />
 
     <EditText
-        android:id="@+id/password_Input"
+        android:id="@+id/nationality_Input"
         android:layout_width="267dp"
         android:layout_height="53dp"
-        android:layout_marginStart="56dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/register_editext_style"
         android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
+        android:hint="Nationality"
+        android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_Input" />
+        app:layout_constraintTop_toBottomOf="@+id/sex_Input" />
+
+    <EditText
+        android:id="@+id/sex_Input"
+        android:layout_width="267dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/register_editext_style"
+        android:ems="10"
+        android:hint="Sex, Enter (`M` or `F`)"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/age_Input" />
+
+    <EditText
+        android:id="@+id/age_Input"
+        android:layout_width="267dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/register_editext_style"
+        android:ems="10"
+        android:hint="Age"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username_Input" />
 
     <Button
         android:id="@+id/signUpBtn"
@@ -108,5 +108,15 @@
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/signText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="40dp"
+        android:text="Already, have an account Sign in"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpBtn" />
 
 </android.support.constraint.ConstraintLayout>

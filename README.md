@@ -107,22 +107,46 @@ Sketch an prototyping using pen and paper:
 Start design the user interface and their logc depend on scenario .
 
 - Main Screen:
-    - ![' ']()
+    - !['MainScreen '](./assets/mainScreen.png)
 - Signup Screen
-    - ![' ']()
+    - !['SignUpScreen '](./assets/signUpScreen.PNG)
 - Login Screen
-    - ![' ']()
+    - !['LoginScreen '](/assets/loginScreen.PNG)
 
 - Connect to firebase.
 - Add firebase authentication to app.
 - Add check current auth status.
 
-
 </details>
-
 
 ---
 
+<details>
+<summary> Second Day - Friday (9/6/2022)</summary>
 
+- In today we start from writing some logic like:
+
+    - Login And validation using FirebaseAuth and FirebaseUser and FirebaseDatabase.
+    - Register Using Firebase.
+    - 
+
+- Using firebase our "users"  Database  will have the attributes:
+    - username
+    - age
+    - sex 
+    - nationality
+    - email
+    - password
+    - role "tourist", "admin", "agent"
+
+- In Scenario, we said if login successful the next activity depends on roles:
+    - if role was "tourist", will go to TouristHomePage.
+    - else if was "admin",will go to AdminHomePage
+    - else if was "agent", will go to AgentHomePage
+
+so, lets crreate the screens first
+
+
+</details>
 
 
