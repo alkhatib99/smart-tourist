@@ -1,19 +1,17 @@
 package com.example.smarttourist;
 
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -48,6 +46,7 @@ String role;
         radioRoleGroup=findViewById(R.id.radioRoleGroup);
 
         radioRoleGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @SuppressLint("NonConstantResourceId")
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 int selectedId = radioRoleGroup.getCheckedRadioButtonId();
@@ -61,16 +60,16 @@ String role;
                         break;
                     case R.id.agentRadio:
                         role="agent";
-                        String email= email_Input.getText().toString();
-                        String password =password_Input.getText().toString();
                         break;
                     case R.id.touristRadio:
                         role="tourist";
                         break;
 
                     default:
+                        role="";
                         email_Input.setEnabled(false);
                         password_Input.setEnabled(false);
+                        break;
                  }
 
             }
@@ -90,7 +89,7 @@ startActivity(SignUpIntent);
             public void onClick(View view) {
                 String email=email_Input.getText().toString().trim();
                 String password=password_Input.getText().toString().trim();
-                if (role =="")
+                if (role.equals(""))
                 {
                     Toast.makeText(getApplicationContext(),"Please select an role",Toast.LENGTH_SHORT).show();
                 }
