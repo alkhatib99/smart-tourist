@@ -109,7 +109,7 @@ Sketch an prototyping using pen and paper:
 Start design the user interface and their logc depend on scenario .
 
 - Main Screen:
-    - !['MainScreen '](./assets/mainScreen.png)
+    - !['MainScreen '](./assets/mainScreen.PNG)
 - Signup Screen
     - !['SignUpScreen '](./assets/signUpScreen.PNG)
 - Login Screen
