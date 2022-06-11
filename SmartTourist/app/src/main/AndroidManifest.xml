@@ -4,6 +4,7 @@
     package="com.example.smarttourist">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartTourist"
         tools:targetApi="31">
+        <activity
+            android:name=".PlanDescription"
+            android:exported="false" />
         <activity
             android:name=".AddPlanActivity"
             android:exported="false" />
