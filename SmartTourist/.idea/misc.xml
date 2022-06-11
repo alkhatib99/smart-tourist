@@ -6,9 +6,16 @@
         <entry key="..\:/Users/Public/Documents/SmartTourist/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/Public/Documents/SmartTourist/app/src/main/res/layout/activity_main.xml" value="0.16485507246376813" />
         <entry key="..\:/Users/Public/Documents/smart-tourist/SmartTourist/app/src/main/res/drawable-v24/register_editext_style.xml" value="0.1925" />
-        <entry key="..\:/Users/Public/Documents/smart-tourist/SmartTourist/app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="..\:/Users/Public/Documents/smart-tourist/SmartTourist/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/Public/Documents/smart-tourist/SmartTourist/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
+        <entry key="..\:/Users/Public/Documents/smart-tourist/SmartTourist/app/src/main/res/layout/activity_add_plan.xml" value="0.22" />
+        <entry key="..\:/Users/Public/Documents/smart-tourist/SmartTourist/app/src/main/res/layout/activity_admin_home.xml" value="0.2" />
+        <entry key="..\:/Users/Public/Documents/smart-tourist/SmartTourist/app/src/main/res/layout/activity_agent_home_page.xml" value="0.22" />
+        <entry key="..\:/Users/Public/Documents/smart-tourist/SmartTourist/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Users/Public/Documents/smart-tourist/SmartTourist/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/Public/Documents/smart-tourist/SmartTourist/app/src/main/res/layout/activity_plan.xml" value="0.22" />
+        <entry key="..\:/Users/Public/Documents/smart-tourist/SmartTourist/app/src/main/res/layout/activity_sign_up.xml" value="0.2" />
+        <entry key="..\:/Users/Public/Documents/smart-tourist/SmartTourist/app/src/main/res/layout/activity_tourist_home.xml" value="0.2" />
+        <entry key="..\:/Users/Public/Documents/smart-tourist/SmartTourist/app/src/main/res/layout/layout.xml" value="0.1" />
+        <entry key="..\:/Users/Public/Documents/smart-tourist/SmartTourist/app/src/main/res/layout/layout_plan_details.xml" value="0.22" />
       </map>
     </option>
   </component>

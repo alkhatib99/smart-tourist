@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TouristHomeActivity"
+    android:background="@color/background"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primaryDark"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/guideData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+
+            android:text="Tourist Home Page"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/findPlanButton"
+        android:layout_width="118dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="196dp"
+        android:background="@drawable/button_back"
+        android:text="Find A Plan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/myPlansButton"
+        android:layout_width="116dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/button_back"
+        android:text="My Plans"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/findPlanButton" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
