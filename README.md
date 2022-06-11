@@ -109,7 +109,7 @@ Sketch an prototyping using pen and paper:
 Start design the user interface and their logc depend on scenario .
 
 - Main Screen:
-    - !['MainScreen '](./assets/mainScreen.png)
+    - !['MainScreen '](./assets/mainScreen.PNG)
 - Signup Screen
     - !['SignUpScreen '](./assets/signUpScreen.PNG)
 - Login Screen
@@ -187,3 +187,8 @@ So, Let's start with the logic of it. All our implementation will be depend on s
 
 </details>
 
+<hr>
+
+---
+
+* We shedualea meet at saturday 11/6/2022.

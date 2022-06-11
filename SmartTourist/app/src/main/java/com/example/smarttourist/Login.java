@@ -29,8 +29,10 @@ Intent SignUpIntent;
 FirebaseAuth firebaseAuth;
 FirebaseUser firebaseUser;
 DatabaseReference databaseReference;
+Intent intent;
 RadioGroup radioRoleGroup;
 String role;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,7 +91,7 @@ startActivity(SignUpIntent);
             public void onClick(View view) {
                 String email=email_Input.getText().toString().trim();
                 String password=password_Input.getText().toString().trim();
-                if (role.equals(""))
+             if (role.equals(""))
                 {
                     Toast.makeText(getApplicationContext(),"Please select an role",Toast.LENGTH_SHORT).show();
                 }
@@ -106,8 +108,26 @@ startActivity(SignUpIntent);
                             if(task.isSuccessful())
                             {
 
-                                switch ()
-                                Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                switch (role)
+                                {
+                                    case "admin":
+                                        intent=new Intent(getApplicationContext(), AdminHomeActivity.class);
+                                        break;
+                                    case "agent":
+                                        intent=new Intent(getApplicationContext(), AgentHomePage.class);
+                                        break;
+                                    case "tourist":
+                                        intent=new Intent(getApplicationContext(), TouristHomeActivity.class);
+                                        break;
+
+                                    default:
+                                        Toast.makeText(Login.this, "Login Successful, But the role are not selected", Toast.LENGTH_SHORT).show();
+break;
+                                }
+
+
+                            Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                startActivity(intent);
                             }
                             else
                             {
