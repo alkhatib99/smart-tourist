@@ -106,6 +106,7 @@ startActivity(SignUpIntent);
                             if(task.isSuccessful())
                             {
 
+                                switch ()
                                 Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
                             }
                             else

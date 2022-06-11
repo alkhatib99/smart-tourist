@@ -124,7 +124,7 @@ Start design the user interface and their logc depend on scenario .
 <hr>
 
 <details>
-<summary> Second Day - Friday (9/6/2022)</summary>
+<summary> Second Day - Friday (10/6/2022)</summary>
 
 - In today we start from writing some logic like:
 
@@ -160,7 +160,7 @@ so, lets crreate the screens first:
 <hr>
 
 <details>
-<summary> Third Day - Saturday (9/6/2022)</summary>
+<summary> Third Day - Saturday (11/6/2022)</summary>
 
 - Yesterday we create a basic three activities :
     1. Admin Home Page
@@ -186,3 +186,4 @@ So, Let's start with the logic of it. All our implementation will be depend on s
 
 
 </details>
+
