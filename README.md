@@ -73,6 +73,8 @@ Note: The time period will be split into two sections:
 
 ### Day By Day
 
+<br><br>
+
 <details>
 <summary> First Day - Thursday (9/6/2022)</summary>
 
@@ -119,7 +121,7 @@ Start design the user interface and their logc depend on scenario .
 
 </details>
 
----
+<hr>
 
 <details>
 <summary> Second Day - Friday (9/6/2022)</summary>
@@ -154,6 +156,8 @@ so, lets crreate the screens first:
     - Tourist Home Activity:
         * !["Tourist Home"](./assets/touristHomePage.PNG)
 </details>
+
+<hr>
 
 <details>
 <summary> Third Day - Saturday (9/6/2022)</summary>
