@@ -153,9 +153,32 @@ so, lets crreate the screens first:
         * !["AgentHome"](./assets/agentHomePage.PNG).
     - Tourist Home Activity:
         * !["Tourist Home"](./assets/touristHomePage.PNG)
+</details>
 
+<details>
+<summary> Third Day - Saturday (9/6/2022)</summary>
+
+- Yesterday we create a basic three activities :
+    1. Admin Home Page
+    2. Agent Home Page
+    3. Tourist Home Page
+So, Let's start with the logic of it. All our implementation will be depend on senario, we have a part 2 of the scenario [please see it](./Scenarios/first-scenario.md). 
+
+- After implement some functionality of the screens like navigate, we create a class called `Plan` that have an attribute of the plan, and to make save and edit more easier.
+
+- The plans need to save it in list, and to show the list we need to define an recyclerView. So we use `Firestore.RecyclerView`, thats will help to save the plan object or item to firebase database.
+
+- When we want to use list and recycler view we need to use something called `adapter`, so we create `PlanAdapter` and `PlanRecyclyerView`.
+
+- The add plan page that using by agent to add a new plan, i need the information about the plan and then save it into `firebase.firestore`, so we design the `add plan screen` as below:
+    - !["Add Plan Screen"](./assets/addPlanPage.PNG).
+
+- Each plan will have some attributes and some values, how we will show :
+    - we using an `CardView`, this Card View will contain the info about plan.
+    - !["CarView"](./assets/planDetails.PNG).
+
+- We talk about the `RecyclerView`, and `FirestoreRecyclerView`, we design an activity that contains an `FirestoreRecyclerView`, that contain an items of type `CardView`, using the adapter will control the view and using ciewModel will be easier, see design below:
+    - !["FirestoreRecyclerView"](./assets/planRecyclerView.PNG)
 
 
 </details>
-
-
