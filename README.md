@@ -144,7 +144,16 @@ Start design the user interface and their logc depend on scenario .
     - else if was "admin",will go to AdminHomePage
     - else if was "agent", will go to AgentHomePage
 
-so, lets crreate the screens first
+so, lets crreate the screens first:
+
+- Create an 3 Activties at first: 
+    - Admin Home Activity:
+        * !["AdminHome"](./assets/adminHomePage.PNG).
+    - Agent Home Activity:
+        * !["AgentHome"](./assets/agentHomePage.PNG).
+    - Tourist Home Activity:
+        * !["Tourist Home"](./assets/touristHomePage.PNG)
+
 
 
 </details>

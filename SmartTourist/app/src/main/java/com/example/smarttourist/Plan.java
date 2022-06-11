@@ -5,6 +5,7 @@ public class Plan {
     private String Plan_places;
     private String Duration;
     private Long Price;
+    private String Description;
 
     public Plan()
     {

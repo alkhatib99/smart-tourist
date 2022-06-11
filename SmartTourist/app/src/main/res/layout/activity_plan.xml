@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PlanActivity"
-    android:background="#FFFBFC">
+    android:background="@color/background">
 
 <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
