@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
@@ -18,6 +19,8 @@ Intent loginIntent, signUpIntent;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView= findViewById(R.id.textView);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         textView.setTypeface(ResourcesCompat.getFont(MainActivity.this, R.font.bangers_regular));
         loginBtn=findViewById(R.id.loginBtn);
         signUpBtn=findViewById(R.id.signUpBtn);

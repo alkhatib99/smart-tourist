@@ -16,8 +16,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class PlanAdapter extends FirestoreRecyclerAdapter<Plan,PlanAdapter.plan_holder> {
-
-
     private FirebaseFirestore db;
     // private FirebaseAuth mAuth;
     private OnItemClickListener listener;

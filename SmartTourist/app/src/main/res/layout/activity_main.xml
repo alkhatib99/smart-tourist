@@ -25,7 +25,7 @@
         android:id="@+id/loginBtn"
         android:layout_width="182dp"
         android:layout_height="69dp"
-        android:layout_marginStart="112dp"
+        android:layout_marginStart="104dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/register_editext_style"
         android:text="LOGIN"
@@ -36,11 +36,13 @@
         android:id="@+id/signUpBtn"
         android:layout_width="182dp"
         android:layout_height="69dp"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/register_editext_style"
         android:text="Sign Up"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/loginBtn"
+        app:layout_constraintVertical_bias="0.089" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

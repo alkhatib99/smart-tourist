@@ -25,17 +25,22 @@ public class PlanActivity extends AppCompatActivity {
     RecyclerView mRecyclerview2;
     String guide_id,guide_name;
     TextView guideData;
+    FirebaseUser firebaseUser;
     SharedPreferences shared;
     private PlanAdapter adapter;
     Button addPlan;
+
+//    DatabaseReference datbase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan);
+//    d
         shared = getSharedPreferences("Travel_Data", Context.MODE_PRIVATE);
         mRecyclerview2=findViewById(R.id.mRecyclerView2);
         mRecyclerview2.setLayoutManager(new LinearLayoutManager(this));
+//        firebaseUser=.
         //guide_id = getIntent().getStringExtra("guide_id");
         //guide_name = getIntent().getStringExtra("guide_name");
         addPlan = findViewById(R.id.addButton);

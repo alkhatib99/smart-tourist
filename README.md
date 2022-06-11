@@ -192,3 +192,13 @@ So, Let's start with the logic of it. All our implementation will be depend on s
 ---
 
 * We shedualea meet at saturday 11/6/2022.
+
+- **Resault:**
+    - Create a pop-up window to filter the plans(Budget, Type, Duration).
+    - Add an attribute `HealthConcdtiotion` to user.
+    -   on the desciption page (Description, Images, edit, delete).
+    - edit the button on card view, to open a desciption of selected one.
+    - Remainning time, send notification when start, when arrive any point will send notification tell him is arrived.
+    - Rate the trip or plan when finish (optional, and not uncluded in the database).
+    
+* The next meeting will be at Wendnsday (15/6/2022).

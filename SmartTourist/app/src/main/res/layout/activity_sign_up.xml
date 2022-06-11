@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -91,12 +90,10 @@
         android:id="@+id/signUpBtn"
         android:layout_width="152dp"
         android:layout_height="49dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="32dp"
         android:background="@drawable/register_editext_style"
         android:text="SIGNUP"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_Input" />
+        tools:layout_editor_absoluteX="140dp"
+        tools:layout_editor_absoluteY="549dp" />
 
     <TextView
         android:id="@+id/text_view_Login"
