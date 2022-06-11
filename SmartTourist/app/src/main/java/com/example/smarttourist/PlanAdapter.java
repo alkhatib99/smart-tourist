@@ -1,5 +1,5 @@
 package com.example.smarttourist;
-
+import android.annotation.SuppressLint;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +27,7 @@ public class PlanAdapter extends FirestoreRecyclerAdapter<Plan,PlanAdapter.plan_
         super(options);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onBindViewHolder(@NonNull final plan_holder holder, int position, @NonNull Plan model) {
         holder.plan_name123.setText(model.getPlan_name());
@@ -34,20 +35,17 @@ public class PlanAdapter extends FirestoreRecyclerAdapter<Plan,PlanAdapter.plan_
         holder.price.setText(model.getPrice().toString());
         holder.duration.setText(model.getDuration());
         //shared = getSharedPreferences("Travel_Data",Context.MODE_PRIVATE);
-        holder.delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //mAuth = FirebaseAuth.getInstance();
-                //FirebaseUser user = mAuth.getCurrentUser();
-                //String guide_id=user.getUid();
-                //db=FirebaseFirestore.getInstance();
-                //int position = getAdapterPosition();
-                int position=holder.getAdapterPosition();
-                if(position != RecyclerView.NO_POSITION && listener !=null)
-                    listener.onItemClick(getSnapshots().getSnapshot(position), position);
-                //db.collection("Guides").document(guide_id).collection("Plans").document().delete();
-                Log.d("EEEE","Delete button clicked");
-            }
+        holder.delete.setOnClickListener(v -> {
+            //mAuth = FirebaseAuth.getInstance();
+            //FirebaseUser user = mAuth.getCurrentUser();
+            //String guide_id=user.getUid();
+            //db=FirebaseFirestore.getInstance();
+            //int position = getAdapterPosition();
+            int position1 =holder.getBindingAdapterPosition();
+            if(position1 != RecyclerView.NO_POSITION && listener !=null)
+                listener.onItemClick(getSnapshots().getSnapshot(position1), position1);
+            //db.collection("Guides").document(guide_id).collection("Plans").document().delete();
+            Log.d("EEEE","Delete button clicked");
         });
     }
 

@@ -187,3 +187,8 @@ So, Let's start with the logic of it. All our implementation will be depend on s
 
 </details>
 
+<hr>
+
+---
+
+* We shedualea meet at saturday 11/6/2022.
