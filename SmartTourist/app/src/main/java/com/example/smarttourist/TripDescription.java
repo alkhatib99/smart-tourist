@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class PlanDescription extends AppCompatActivity {
+public class TripDescription extends AppCompatActivity {
 
 
     @Override

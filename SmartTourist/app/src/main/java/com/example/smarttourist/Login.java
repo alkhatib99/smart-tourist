@@ -41,7 +41,7 @@ String role;
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         email_Input=findViewById(R.id.email_Input);
-        password_Input=findViewById(R.id.password_Input);
+        password_Input=findViewById(R.id.health_condition);
         firebaseAuth=FirebaseAuth.getInstance();
         databaseReference= FirebaseDatabase.getInstance().getReference().child("Users");
         role="";

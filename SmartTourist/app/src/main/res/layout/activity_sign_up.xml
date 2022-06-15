@@ -9,6 +9,8 @@
     tools:context=".SignUp">
 
     <EditText
+
+        android:autofillHints="username"
         android:id="@+id/username_Input"
         android:layout_width="267dp"
         android:layout_height="53dp"
@@ -22,7 +24,21 @@
         app:layout_constraintTop_toBottomOf="@+id/text_view_Login" />
 
     <EditText
-        android:id="@+id/password_Input"
+        android:autofillHints="password"
+        android:id="@+id/health_condition"
+        android:layout_width="267dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/register_editext_style"
+        android:ems="10"
+        android:hint="Health Condition"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_Input2" />
+
+    <EditText
+        android:id="@+id/password_Input2"
         android:layout_width="267dp"
         android:layout_height="53dp"
         android:layout_marginStart="84dp"
@@ -61,6 +77,7 @@
         app:layout_constraintTop_toBottomOf="@+id/sex_Input" />
 
     <EditText
+        android:autofillHints="emailAddress"
         android:id="@+id/email_Input"
         android:layout_width="267dp"
         android:layout_height="53dp"
@@ -90,10 +107,12 @@
         android:id="@+id/signUpBtn"
         android:layout_width="152dp"
         android:layout_height="49dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/register_editext_style"
         android:text="SIGNUP"
-        tools:layout_editor_absoluteX="140dp"
-        tools:layout_editor_absoluteY="549dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/health_condition" />
 
     <TextView
         android:id="@+id/text_view_Login"
