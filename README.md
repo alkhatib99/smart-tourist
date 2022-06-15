@@ -187,6 +187,78 @@ So, Let's start with the logic of it. All our implementation will be depend on s
 
 </details>
 
+
+<details>
+<summary>Day4 14-6-2022 </summary>
+
+- Summarize what i do :
+
+- Redifne the user calss add `healthCondition`, and make the id it the eky of each user, i create  a new database `Users` wwith attributes:
+    - id
+    - name 
+    - email 
+    - password 
+    - sex 
+    - age 
+    - nationality
+    - role 
+    - healthCondition
+
+and i make the role is final for sign up `tourist`, so that no user can sign up else the tourist.
+
+
+- Create a class called Trip also added in database firebase with attributes:
+    - tripName:String
+    - tripPlaces: String
+    - tripDuration: String
+    - trip Price: Long(double)
+    - tripImage: byte[]
+    - tripType: String
+    - tripDesciptioon: String
+    - tripStartDate: Date
+    - tripEndDate: Date
+    - AgentId: String 
+    
+
+- Define Setters and Getters for each class.
+- In `AddTripActiviy`, add a `DatePicker` for each of (`startDate`, `EndDate`), and add  a `description` field, also the add `ImageView`, when click on it will make user able to upload a image, then it will upload to the `firebaseDatabase`, when click on `addTrip` button will validate all the filed are required.
+
+- In `signUp`, The required fields will be:
+
+    - `Username`
+    - `Password`
+    - `Email`
+    - `Sex`
+    - Other fields will set `null` if it's empty.
+
+- When User Sign Up, will add to databse firebase as a users child called `tourists`, example:
+    - Let's say teh user was have this attributes:
+        - ```code 
+        user = new User(`username`:`ahmed`, `email`:`ahmed@c.com`, `passwprd`:`123123`, `age`:`22`,`sex`:`male`, `nationality`:`Jordanian`, `role`:`tourist`, `healthCondition`:`null`);
+          ```
+    - Then the data will be saved as below:
+        ```json
+        
+        "Users":{
+            "tourist":{
+                    "Id":{
+                        "username":"ahmed", "email":"ahmed@c.com", "password":"123123",
+                         "age":"22","sex":"male", "nationality":"Jordanian", "role":"tourist", "healthCondition":null
+                    }
+                        
+                      }
+                 }
+        ```    
+    </details>
+
+<details>
+<summary> Day5 15/6/2021/</summary>
+
+- In This day We Have a meet at 10:00 PM, to see the edit and test the application.
+
+
+</details>
+
 <hr>
 
 ---

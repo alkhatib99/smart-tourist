@@ -35,7 +35,7 @@
         android:background="@drawable/register_editext_style"
         android:text="@string/login"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_Input" />
+        app:layout_constraintTop_toBottomOf="@+id/health_condition" />
 
     <TextView
         android:id="@+id/text_view_Login"
@@ -61,7 +61,7 @@
         tools:text="Not Registered Yet!, Click Here" />
 
     <EditText
-        android:id="@+id/password_Input"
+        android:id="@+id/health_condition"
         android:layout_width="267dp"
         android:layout_height="53dp"
         android:layout_marginStart="56dp"

@@ -1,6 +1,5 @@
 package com.example.smarttourist;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -20,34 +19,31 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-public class PlanActivity extends AppCompatActivity {
+public class TripActivity extends AppCompatActivity {
     FirebaseFirestore db=FirebaseFirestore.getInstance();
     RecyclerView mRecyclerview2;
     String guide_id,guide_name;
     TextView guideData;
     FirebaseUser firebaseUser;
     SharedPreferences shared;
-    private PlanAdapter adapter;
-    Button addPlan;
+    private TripAdapter adapter;
+    Button addTrip;
 
 //    DatabaseReference datbase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_plan);
+        setContentView(R.layout.activity_trip);
 //    d
-        shared = getSharedPreferences("Travel_Data", Context.MODE_PRIVATE);
         mRecyclerview2=findViewById(R.id.mRecyclerView2);
         mRecyclerview2.setLayoutManager(new LinearLayoutManager(this));
-//        firebaseUser=.
-        //guide_id = getIntent().getStringExtra("guide_id");
-        //guide_name = getIntent().getStringExtra("guide_name");
-        addPlan = findViewById(R.id.addButton);
-        addPlan.setOnClickListener(new View.OnClickListener() {
+
+        addTrip = findViewById(R.id.addButton);
+        addTrip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),AddPlanActivity.class);
+                Intent i = new Intent(getApplicationContext(),AddTripActivity.class);
                 startActivity(i);
 
             }
@@ -56,7 +52,7 @@ public class PlanActivity extends AppCompatActivity {
         guide_id=shared.getString("guide_id","Error");
         guide_name=shared.getString("guide_name","Error");
         guideData =findViewById(R.id.guideData);
-        guideData.setText("Plans of "+guide_name+":");
+        guideData.setText("Trips of "+guide_name+":");
 
         FirebaseUser checkUser = FirebaseAuth.getInstance().getCurrentUser();
         if(checkUser == null){
@@ -69,31 +65,31 @@ public class PlanActivity extends AppCompatActivity {
         Query query=FirebaseFirestore.getInstance()
                 .collection("Guides")
                 .document(guide_id)
-                .collection("Plans")
+                .collection("Trips")
                 .limit(50);
 
-        FirestoreRecyclerOptions<Plan> options = new FirestoreRecyclerOptions.Builder<Plan>()
-                .setQuery(query,Plan.class)
+        FirestoreRecyclerOptions<Trip> options = new FirestoreRecyclerOptions.Builder<Trip>()
+                .setQuery(query,Trip.class)
                 .build();
 
-        adapter=new PlanAdapter(options);
+        adapter=new TripAdapter(options);
         mRecyclerview2.setAdapter(adapter);
         adapter.startListening();
 
-        adapter.setOnItemClickListener(new PlanAdapter.OnItemClickListener(){
+        adapter.setOnItemClickListener(new TripAdapter.OnItemClickListener(){
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
-                //Plan plan=documentSnapshot.toObject(Plan.class);
+                //Trip Trip=documentSnapshot.toObject(Trip.class);
                 String id = documentSnapshot.getId();
                 DocumentReference path = documentSnapshot.getReference();
                 path.delete();
 
-//                Toast.makeText(PlanActivity.this,
+//                Toast.makeText(TripActivity.this,
 //                        "Position: " + position + "  ID:  " + id + "  \nPath " + path, Toast.LENGTH_SHORT).show();
 
 
                 Intent i = new Intent(getApplicationContext(),MainActivity.class);
-                //i.putExtra("plan_id",id);
+                //i.putExtra("Trip_id",id);
                 //i.putExtra("city",value);
                 //i.putExtra("Value2", "Simple Tutorial");
                 // Set the request code to any code you like, you can identify the

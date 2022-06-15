@@ -18,7 +18,7 @@
         android:background="@color/primaryDark">
 
         <TextView
-            android:id="@+id/plan_name12"
+            android:id="@+id/trip_name12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -30,7 +30,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/plan_places12"
+            android:id="@+id/trip_places12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -44,7 +44,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
         <TextView
-            android:id="@+id/plan_description12"
+            android:id="@+id/trip_description12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -53,11 +53,11 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/transparentWhite"
             app:layout_constraintStart_toEndOf="@+id/textView4"
-            app:layout_constraintTop_toBottomOf="@+id/plan_prices12"
+            app:layout_constraintTop_toBottomOf="@+id/trip_prices12"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
-            android:id="@+id/plan_prices12"
+            android:id="@+id/trip_prices12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Plan Name : "
+            android:text="trip Name : "
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Plan Covers : "
+            android:text="trip Covers : "
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"

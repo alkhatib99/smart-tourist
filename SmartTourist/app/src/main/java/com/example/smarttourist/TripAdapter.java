@@ -15,21 +15,21 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class PlanAdapter extends FirestoreRecyclerAdapter<Plan,PlanAdapter.plan_holder> {
+public class TripAdapter extends FirestoreRecyclerAdapter<Trip,TripAdapter.Trip_holder> {
     private FirebaseFirestore db;
     // private FirebaseAuth mAuth;
     private OnItemClickListener listener;
     // SharedPreferences shared;
-    public PlanAdapter(FirestoreRecyclerOptions<Plan> options)
+    public TripAdapter(FirestoreRecyclerOptions<Trip> options)
     {
         super(options);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
-    protected void onBindViewHolder(@NonNull final plan_holder holder, int position, @NonNull Plan model) {
-        holder.plan_name123.setText(model.getPlan_name());
-        holder.plan_places.setText(model.getPlan_places());
+    protected void onBindViewHolder(@NonNull final Trip_holder holder, int position, @NonNull Trip model) {
+        holder.Trip_name123.setText(model.getName());
+        holder.Trip_places.setText(model.getPlace());
         holder.price.setText(model.getPrice().toString());
         holder.duration.setText(model.getDuration());
         //shared = getSharedPreferences("Travel_Data",Context.MODE_PRIVATE);
@@ -42,32 +42,32 @@ public class PlanAdapter extends FirestoreRecyclerAdapter<Plan,PlanAdapter.plan_
             int position1 =holder.getBindingAdapterPosition();
             if(position1 != RecyclerView.NO_POSITION && listener !=null)
                 listener.onItemClick(getSnapshots().getSnapshot(position1), position1);
-            //db.collection("Guides").document(guide_id).collection("Plans").document().delete();
+            //db.collection("Guides").document(guide_id).collection("Trips").document().delete();
             Log.d("EEEE","Delete button clicked");
         });
     }
 
     @NonNull
     @Override
-    public plan_holder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_plan_details,viewGroup,false);
-        return new plan_holder(v);
+    public Trip_holder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View v= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_trip_details,viewGroup,false);
+        return new Trip_holder(v);
     }
 
 
-    class plan_holder extends RecyclerView.ViewHolder
+    class Trip_holder extends RecyclerView.ViewHolder
     {
-        public TextView plan_name123;
+        public TextView Trip_name123;
         public TextView price;
-        public TextView plan_places;
+        public TextView Trip_places;
         public TextView duration;
         public Button delete;
-        public plan_holder(View view) {
+        public Trip_holder(View view) {
             super(view);
-            plan_name123=view.findViewById(R.id.plan_name12);
-            price=view.findViewById(R.id.plan_prices12);
-            plan_places=view.findViewById(R.id.plan_places12);
-            duration=view.findViewById(R.id.plan_description12);
+            Trip_name123=view.findViewById(R.id.trip_name12);
+            price=view.findViewById(R.id.trip_prices12);
+            Trip_places=view.findViewById(R.id.trip_places12);
+            duration=view.findViewById(R.id.trip_description12);
             delete=view.findViewById(R.id.delete);
 //            view.setOnClickListener(new View.OnClickListener() {
 //                @Override
@@ -93,7 +93,7 @@ public class PlanAdapter extends FirestoreRecyclerAdapter<Plan,PlanAdapter.plan_
         void onItemClick(DocumentSnapshot documentSnapshot, int position);
     }
 
-    public void setOnItemClickListener(PlanAdapter.OnItemClickListener listener) {
+    public void setOnItemClickListener(TripAdapter.OnItemClickListener listener) {
         this.listener = listener;
     }
 }
