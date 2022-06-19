@@ -1,96 +1,53 @@
 package com.example.smarttourist;
 
-import java.util.Arrays;
+import android.graphics.Bitmap;
+
 import java.util.Date;
-import java.util.Objects;
 
 public class Trip {
+    private String ID;
+
     private String Name;
     private String Place;
     private String Duration;
-    private Long Price;
-    private byte[] Image;
+    private double Price;
     private String Type;
     private String Description;
     private Date StartDate;
     private Date endDate;
-
-
-
     private String AgentId;
+private Bitmap image;
 
-    public Trip(String name, String place, String duration, Long price, byte[] image, String type, String description, Date startDate, Date endDate, String agentId) {
+    public Bitmap getImage() {
+        return image;
+    }
+
+    public void setImage(Bitmap image) {
+        this.image = image;
+    }
+
+    public Trip(String ID, String name, String place, String duration, double price, String type, String description, Date startDate, Date endDate, String agentId) {
+        this.ID = ID;
         Name = name;
         Place = place;
         Duration = duration;
         Price = price;
-        Image = image;
         Type = type;
         Description = description;
         StartDate = startDate;
         this.endDate = endDate;
         AgentId = agentId;
-    }  public String getAgentId() {
-        return AgentId;
     }
 
-    public void setAgentId(String agentId) {
-        AgentId = agentId;
+    public Trip() {
     }
 
-    public byte[] getImage() {
-        return Image;
+    public String getID() {
+        return ID;
     }
 
-    public void setImage(byte[] image) {
-        Image = image;
-    }
-
-    @Override
-    public String toString() {
-        return "Trip{" +
-                "Name='" + Name + '\'' +
-                ", Place='" + Place + '\'' +
-                ", Duration='" + Duration + '\'' +
-                ", Price=" + Price +
-                ", Type='" + Type + '\'' +
-                ", Description='" + Description + '\'' +
-//                ", MainImage='" + MainImage + '\'' +
-                ", StartDate=" + StartDate +
-                ", endDate=" + endDate +
-                ", images=" + Arrays.toString(images) +
-                '}';
-    }
-
-    public Date getStartDate() {
-        return StartDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        StartDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Trip)) return false;
-        Trip trip = (Trip) o;
-        return Objects.equals(getName(), trip.getName()) && Objects.equals(getPlace(), trip.getPlace()) && Objects.equals(getDuration(), trip.getDuration()) && Objects.equals(getPrice(), trip.getPrice()) && Objects.equals(getType(), trip.getType()) && Objects.equals(getDescription(), trip.getDescription()) && Arrays.equals(getImages(), trip.getImages());
-    }
-
-    @Override
-    public int hashCode() {
-        int result = Objects.hash(getName(), getPlace(), getDuration(), getPrice(), getType(), getDescription());
-        result = 31 * result + Arrays.hashCode(getImages());
-        return result;
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     public String getName() {
@@ -117,11 +74,11 @@ public class Trip {
         Duration = duration;
     }
 
-    public Long getPrice() {
+    public double getPrice() {
         return Price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(double price) {
         Price = price;
     }
 
@@ -141,30 +98,45 @@ public class Trip {
         Description = description;
     }
 
-//    public String getHealthCondition() {
-//        return HealthCondition;
-//    }
-
-//    public void setHealthCondition(String healthCondition) {
-//        HealthCondition = healthCondition;
-//    }
-
-
-
-    public String[] getImages() {
-        return images;
+    public Date getStartDate() {
+        return StartDate;
     }
 
-    public void setImages(String[] images) {
-        this.images = images;
+    public void setStartDate(Date startDate) {
+        StartDate = startDate;
     }
 
-    public Trip() {
+    public Date getEndDate() {
+        return endDate;
     }
 
-    private String[] images;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
 
+    public String getAgentId() {
+        return AgentId;
+    }
 
+    public void setAgentId(String agentId) {
+        AgentId = agentId;
+    }
+
+    @Override
+    public String toString() {
+        return "Trip{" +
+                "ID='" + ID + '\'' +
+                ", Name='" + Name + '\'' +
+                ", Place='" + Place + '\'' +
+                ", Duration='" + Duration + '\'' +
+                ", Price=" + Price +
+                ", Type='" + Type + '\'' +
+                ", Description='" + Description + '\'' +
+                ", StartDate=" + StartDate +
+                ", endDate=" + endDate +
+                ", AgentId='" + AgentId + '\'' +
+                '}';
+    }
 }
 
 

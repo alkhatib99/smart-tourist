@@ -9,99 +9,102 @@
     tools:context=".SignUp">
 
     <EditText
+        android:id="@+id/login_email_Input"
+        android:layout_width="245dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints="emailAddress"
+        android:background="@drawable/register_editext_style"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nationality_Input" />
 
-        android:autofillHints="username"
+    <EditText
+
         android:id="@+id/username_Input"
-        android:layout_width="267dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="84dp"
+        android:layout_width="166dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
+        android:layout_marginEnd="24dp"
+        android:autofillHints="username"
         android:background="@drawable/register_editext_style"
         android:ems="10"
         android:hint="Username"
         android:inputType="text"
+        app:layout_constraintEnd_toStartOf="@+id/age_Input"
+        app:layout_constraintHorizontal_bias="0.674"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_view_Login" />
 
     <EditText
-        android:autofillHints="password"
-        android:id="@+id/health_condition"
-        android:layout_width="267dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/register_editext_style"
-        android:ems="10"
-        android:hint="Health Condition"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_Input2" />
-
-    <EditText
-        android:id="@+id/password_Input2"
-        android:layout_width="267dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/register_editext_style"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_Input" />
-
-    <EditText
         android:id="@+id/sex_Input"
-        android:layout_width="267dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="245dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/register_editext_style"
         android:ems="10"
         android:hint="Sex, Enter (`M` or `F`)"
         android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/age_Input" />
 
     <EditText
         android:id="@+id/nationality_Input"
-        android:layout_width="267dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="245dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/register_editext_style"
         android:ems="10"
         android:hint="Nationality"
         android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sex_Input" />
 
     <EditText
-        android:autofillHints="emailAddress"
-        android:id="@+id/email_Input"
-        android:layout_width="267dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="8dp"
+        android:id="@+id/password_Input2"
+        android:layout_width="245dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/register_editext_style"
         android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
+        android:hint="Password"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nationality_Input" />
+        app:layout_constraintTop_toBottomOf="@+id/login_email_Input" />
+
+    <EditText
+        android:id="@+id/login_password"
+        android:layout_width="245dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="12dp"
+        android:autofillHints="password"
+        android:background="@drawable/register_editext_style"
+        android:ems="10"
+        android:hint="Health Condition"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_Input2" />
 
     <EditText
         android:id="@+id/age_Input"
-        android:layout_width="267dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="164dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/register_editext_style"
         android:ems="10"
         android:hint="Age"
         android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username_Input" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_Login" />
 
     <Button
         android:id="@+id/signUpBtn"
@@ -112,18 +115,19 @@
         android:text="SIGNUP"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/health_condition" />
+        app:layout_constraintTop_toBottomOf="@+id/login_password" />
 
     <TextView
         android:id="@+id/text_view_Login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="128dp"
+        android:layout_width="185dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/bangers_regular"
         android:text="SIGNUP PAGE"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView

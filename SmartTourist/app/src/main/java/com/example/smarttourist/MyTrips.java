@@ -5,14 +5,13 @@ import android.os.Bundle;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AgentHomePage extends AppCompatActivity {
+public class MyTrips extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agent_home_page);
+        setContentView(R.layout.activity_my_trips);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-
     }
 }

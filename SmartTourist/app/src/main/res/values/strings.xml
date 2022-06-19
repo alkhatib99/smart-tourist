@@ -17,9 +17,9 @@
     <string name="main_image">Main Image</string>
     <string-array name="trip_type">
 
-    <item>Type Of Trip</item>
-    <item>Adventure</item>
-    <item>History</item>
-    <item>Religion</item>
-</string-array>
+        <item>Type Of Trip</item>
+        <item>Adventure</item>
+        <item>History</item>
+        <item>Religion</item>
+    </string-array>
 </resources>
