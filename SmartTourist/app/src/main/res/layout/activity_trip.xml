@@ -20,11 +20,28 @@
             android:id="@+id/tripActivity_AddButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
             android:layout_marginEnd="8dp"
-            android:text="Add Trip"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="Add Trip" />
+
+        <ImageButton
+            android:id="@+id/searchButton"
+            android:layout_width="94dp"
+            android:layout_height="48dp"
+
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="218dp"
+
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="15dp"
+            android:layout_toEndOf="@+id/tripActivity_AddButton"
+            android:src="@drawable/card_search"
+            tools:ignore="SpeakableTextPresentCheck" />
+
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView

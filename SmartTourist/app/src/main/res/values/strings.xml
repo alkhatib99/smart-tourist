@@ -15,6 +15,7 @@
     <string name="add_trip">Add trip:</string>
     <string name="description">Description</string>
     <string name="main_image">Main Image</string>
+    <string name="enter_budget">Enter Budget</string>
     <string-array name="trip_type">
 
         <item>Type Of Trip</item>
