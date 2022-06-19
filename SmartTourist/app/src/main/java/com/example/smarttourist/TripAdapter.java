@@ -5,7 +5,8 @@ import static androidx.constraintlayout.widget.StateSet.TAG;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -24,11 +25,18 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,9 +44,11 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.Viewholder>imp
 {
 //    private         ImageView rImage;
     private List<Trip> mObjects;
-    StorageReference firebaseStorage = FirebaseStorage.getInstance().getReference();
-    StorageReference storageReference=firebaseStorage.child("images");
+    FirebaseStorage firebaseStorage;
+    StorageReference storageReference;
     Context context;
+    Bitmap bitmap=null;
+    private ArrayList<Trip> myTripsList=new ArrayList<Trip>();
      ArrayList<Trip> tripArrayList=new ArrayList<>();
     private Filter mFilter;
     //Constructor
@@ -48,7 +58,29 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.Viewholder>imp
         Log.d(TAG,"Constructor of Trip Adapter- --------------------------");
         this.context=context;
         this.tripArrayList=tripArrayList;
+        firebaseStorage=FirebaseStorage.getInstance();
+        storageReference=firebaseStorage.getReference();
+        MyTrips myTrips = new MyTrips();
 
+        FirebaseDatabase.getInstance().getReference().child("Users").child(Login.SignedInUser.getId()).child("Trips").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot s : snapshot.getChildren())
+                {
+                    Trip t = s.getValue(Trip.class);
+                    myTripsList.add(t);
+                }
+//                notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+//        myTripsList
+
+//        myTripsList=myTrips.getMyTripsArrayList();
     }
 
 
@@ -58,7 +90,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.Viewholder>imp
     {
         Log.d(TAG,"OnCreate View Holder");
 View view=LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_trip_details,parent,false);
-context.notifyAll();
+
 return new Viewholder(view);
     }
 
@@ -68,42 +100,109 @@ return new Viewholder(view);
     public void onBindViewHolder(@NonNull TripAdapter.Viewholder holder, int position) {
 
         Log.d(TAG,"OnBindViewHolder");
-        this.notifyDataSetChanged();
         Trip trip = tripArrayList.get(position);
-        holder.tripName.setText(trip.getName());
-        holder.tripDuration.setText(trip.getDuration());
-        holder.tripPrice.setText(String.valueOf(trip.getPrice()));
-//        holder.tripStart.setText(String.valueOf(trip.getStartDate()));
-//        holder.tripEnd.setText(String.valueOf(trip.getEndDate()));
-        ;
-        storageReference.child(Login.SignedInUser.getId()+trip.getID());
 
-        final long ONE_MEGABYTE = 1024 * 1024;
-        try {
+            if(!Login.SignedInUser.getRole().equals("tourist")) {
+                Log.d(TAG, "Role is "+Login.SignedInUser.getRole());
+                holder.addButton.setVisibility(View.GONE);
+                holder.addButton.setEnabled(false);
+            }else
+            {
+                Log.d(TAG,"Role is "+Login.SignedInUser.getRole());
+                holder.addButton.setEnabled(true);
+                holder.addButton.setVisibility(View.VISIBLE);
 
+            }
 
-            storageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            holder.addButton.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onSuccess(byte[] bytes) {
-                    Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                    holder.imageView.setImageBitmap(bmp);
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.d(TAG, "Failed" + e.getMessage());
-                    Toast.makeText(context, "The trip: " + trip.getName() + " doesn't have an image, No Such file or Path found!!", Toast.LENGTH_SHORT).show();
+                public void onClick(View v) {
+                    Log.d(TAG,"Add button Clicked");
+                  if(myTripsList.isEmpty())
+                  {
+                      OnCompleteListener onCompleteListener = new OnCompleteListener<Void>() {
+                          @Override
+                          public void onComplete(@NonNull Task<Void> task) {
+                              if (task.isSuccessful())
+                            Log.d(TAG,"Success addedto firebasse");
+else
+    Log.d(TAG,"error "+task.getException());
+                          }
+                      };
+                      FirebaseDatabase.getInstance().getReference().child("Users").child(Login.SignedInUser.getId()).child("Trips").child(trip.getID()).setValue(trip).addOnCompleteListener(onCompleteListener);
 
+                      myTripsList.add(trip);
+                      Toast.makeText(context,"Added Success",Toast.LENGTH_LONG).show();
 
+                  }else if(myTripsList.contains(trip))
+                      Toast.makeText(context, "This teip already exists",Toast.LENGTH_SHORT).show();
+                else
+                  {
+                      boolean can=false;
+                      for (Trip t : myTripsList)
+                      {
+                          try {
+
+                              if (t.getEndDate().before(trip.getStartDate()))
+                                  can = true;
+                              else if (t.getEndDate().after(trip.getStartDate()))
+                                  can = false;
+                          }
+                          catch (Exception e)
+                          {
+                              e.printStackTrace();
+                              Toast.makeText(context,"There are wrong with ond of trip's date",Toast.LENGTH_SHORT).show();
+                          }
+                      }
+                      if(can) {
+                          FirebaseDatabase.getInstance().getReference().child("Users").child(Login.SignedInUser.getId()).child("Trips").setValue(trip);
+
+                          myTripsList.add(trip);
+                      Toast.makeText(context,"Added Success",Toast.LENGTH_LONG).show();
+                      }  else
+                          Toast.makeText(context,"You can't add two trips at same period time ",Toast.LENGTH_LONG).show();
+                  }
                 }
             });
-        }
-        catch (Exception e)
-        {
-            Toast.makeText(context,"Error: "+e.getMessage(),Toast.LENGTH_SHORT).show();
-        }
-        Log.d(TAG,"----------------Holder Info--------------");
+
+            storageReference.child("images/"+Login.SignedInUser.getId()+trip.getID()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                if (uri != null) {
+                    try {
+                            uri.getPath();
+                        bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), uri);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(TAG,"Thr trip "+trip.getName()+" doesn't have image");
+            }
+        });
+
+
+if (bitmap!=null)
+{
+    holder.imageView.setImageBitmap(bitmap);
+
+}
+
+else{
+    holder.imageView.setImageResource(R.drawable.error);
+}
+
+            holder.tripName.setText(trip.getName());
+            holder.tripDuration.setText(trip.getDuration());
+            holder.tripPrice.setText(String.valueOf(trip.getPrice()));
+            Log.d(TAG,"----------------Holder Info--------------");
         Log.d(TAG,holder.tripName.getText().toString()+"\n"+holder.tripDuration.getText().toString());
+
+
             holder.describe.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -112,9 +211,11 @@ return new Viewholder(view);
                     TextView textViewName=(TextView) popupView.findViewById(R.id.popup_name);
                     TextView textViewDesc=(TextView) popupView.findViewById(R.id.popup_Description);
 
-                    textViewName.setText(trip.getName());
+                    textViewName.setText(String.format("%s\n", trip.getName()));
 
-                    textViewDesc.setText(trip.toString());
+                    textViewDesc.setText(
+                            String.format("tripId: %s\ntrip Places:%s\ntrip Price: %s\ntrip Duration: %s\n trip Description %s", trip.getID(), trip.getPlace(), trip.getPrice(), trip.getDuration(), trip.getDescription())
+                    );
 
 
                     int width = LinearLayout.LayoutParams.WRAP_CONTENT;
@@ -124,7 +225,7 @@ return new Viewholder(view);
 
                     // show the popup window
                     // which view you pass in doesn't matter, it is only used for the window tolken
-                    popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
+                    popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
 
                     // dismiss the popup window when touched
                     popupView.setOnTouchListener(new View.OnTouchListener() {
@@ -136,7 +237,6 @@ return new Viewholder(view);
                     });
                 }            }
             );
-
 
         }
 
@@ -157,7 +257,7 @@ return new Viewholder(view);
     public class Viewholder extends  RecyclerView.ViewHolder{
         private ImageView imageView;
         private TextView tripName,tripPrice,tripDuration,tripStart,tripEnd;
-        Button describe;
+        Button describe,addButton;
 LinearLayout layout;
         public Viewholder(@NonNull View itemView) {
             super(itemView);
@@ -167,10 +267,8 @@ LinearLayout layout;
             tripName=itemView.findViewById(R.id.holderTripName);
             tripPrice=itemView.findViewById(R.id.holderTripPrice);
             tripDuration=itemView.findViewById(R.id.holderTripDuration);
-//            tripStart=itemView.findViewById(R.id.holderStartDate);
-//            tripEnd=itemView.findViewById(R.id.holderEndDate);
-                describe=itemView.findViewById(R.id.descButton);
-
+            describe=itemView.findViewById(R.id.descButton);
+addButton=itemView.findViewById(R.id.tripDetailsAddButton);
             layout=itemView.findViewById(R.id.linear);
 
         }

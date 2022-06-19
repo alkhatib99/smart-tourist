@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -145,9 +146,10 @@ Log.d(TAG,"OnActivity Result");
         // Defining the child of storageReference
         StorageReference ref
                 = storageReference
-                .child("images/" + Login.SignedInUser.getId()+tripId);
+                .child("images").child(Login.SignedInUser.getId()+tripId);
         // adding listeners on upload
         // or failure of image
+
         ref.putFile(filePath)
                 .addOnSuccessListener(
                         new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -157,7 +159,13 @@ Log.d(TAG,"OnActivity Result");
 
                                     UploadTask.TaskSnapshot taskSnapshot)
                             {
-                                Log.d(TAG,"OnSuccess Task putFile");
+                                Uri uri = filePath;
+                                uri.getPath();
+StorageReference s=taskSnapshot.getStorage();
+                                FirebaseDatabase.getInstance().getReference().child("images").child(Login.SignedInUser.getId()+tripId).setValue(s.getPath());
+
+
+                                Log.d(TAG,"Success Task putFile");
 
 
                                 // Image uploaded successfully

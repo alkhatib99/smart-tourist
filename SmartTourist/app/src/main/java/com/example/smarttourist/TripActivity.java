@@ -44,8 +44,9 @@ ImageButton searchButton;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trip);
+
         searchButton= (ImageButton) findViewById(R.id.searchButton);
-//      Recyclerview = findViewById(R.id.mRecyclerView);
+      Recyclerview = findViewById(R.id.mRecyclerView);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         tripArrayList=new ArrayList<>();
@@ -119,7 +120,7 @@ ImageButton searchButton;
 
                 // show the popup window
                 // which view you pass in doesn't matter, it is only used for the window tolken
-                popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
+                popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
 
                 // dismiss the popup window when touched
                 popupView.setOnTouchListener(new View.OnTouchListener() {
@@ -134,7 +135,7 @@ ImageButton searchButton;
                 CharSequence d= budget.getText().toString();
                 f.filter(d);
                 adapter.notifyDataSetChanged();
-                f.notifyAll();
+//                f.notifyAll();
 
             }
         });

@@ -27,9 +27,6 @@
             android:name=".MyTrips"
             android:exported="false" />
         <activity
-            android:name=".MyPlans"
-            android:exported="false" />
-        <activity
             android:name=".AddTripImage"
             android:exported="false" />
         <activity
