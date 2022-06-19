@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 TextView textView;
 Button loginBtn, signUpBtn;
 Intent loginIntent, signUpIntent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +23,7 @@ Intent loginIntent, signUpIntent;
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         textView.setTypeface(ResourcesCompat.getFont(MainActivity.this, R.font.bangers_regular));
-        loginBtn=findViewById(R.id.loginBtn);
+        loginBtn=findViewById(R.id.main_loginBtn);
         signUpBtn=findViewById(R.id.signUpBtn);
 
         // Create an action listeners

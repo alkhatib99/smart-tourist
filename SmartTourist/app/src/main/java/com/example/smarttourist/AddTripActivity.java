@@ -2,71 +2,55 @@ package com.example.smarttourist;
 
 import static androidx.constraintlayout.widget.StateSet.TAG;
 
-import android.Manifest;
-import android.app.ProgressDialog;
+import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 public class AddTripActivity extends AppCompatActivity {
-    public Uri imageUri;
-    private FirebaseStorage storage;
-    private StorageReference storageReference;
-    DatePicker pickerStartDate, pickerEndDate;
+
+    EditText pickerStartDate, pickerEndDate;
     Button addTrip;
-    byte[] ImageByte;
     EditText tripName,tripPrice,tripDuration,tripPlaces, tripDescription;
     Spinner tripType;
-
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
     Date startDate,endDate;
     String formattedDate,tripTypeText;
-    ImageView imageView;
     Calendar calendar;
     SimpleDateFormat sdf;
+//    public final int PICK_IMAGE_REQUEST=100;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
 
 
+    /// to convert the date to formatted date like a temperature variables
 int startDay, startMonth, startYear, endDay, endMonth, endYear;
+    private Calendar myCalendar=Calendar.getInstance();
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -74,86 +58,75 @@ int startDay, startMonth, startYear, endDay, endMonth, endYear;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_trip);
         /// Initialize activity items
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         tripName=findViewById(R.id.trip_name);
         tripPrice=findViewById(R.id.trip_price);
         tripPlaces=findViewById(R.id.trip_Places);
         tripDuration=findViewById(R.id.trip_duration);
         tripDescription=findViewById(R.id.trip_description);
         addTrip=findViewById(R.id.trip_add);
-        pickerStartDate=findViewById(R.id.start_date);
-        pickerEndDate=findViewById(R.id.end_date);
+        pickerStartDate= findViewById(R.id.startDateEditText);
+        pickerEndDate=findViewById(R.id.end_dateEditText);
         tripType=findViewById(R.id.trip_type);
-        imageView=findViewById(R.id.imageView);
-        storage = FirebaseStorage.getInstance();
-        storageReference=storage.getReference();
         calendar = Calendar.getInstance();
+        firebaseAuth=FirebaseAuth.getInstance();
+        firebaseUser=firebaseAuth.getCurrentUser();
+        firebaseDatabase=FirebaseDatabase.getInstance();
+        databaseReference=firebaseDatabase.getReference().child("Trips");
 
-
-//        checkFilePermissions();
-pickerStartDate.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
-    @Override
-    public void onDateChanged(DatePicker datePicker, int i, int i1, int i2) {
-        startDay= i2;
-        startMonth=i1;
-        startYear=i;
-        calendar.set(startYear, startMonth, startDay);
-
-       sdf = new SimpleDateFormat("dd-MM-yyyy");
-       formattedDate = sdf.format(calendar.getTime());
-        ParsePosition pos = new ParsePosition(0);
-
-         startDate=sdf.parse(formattedDate,pos);
-
-    }
-});
-
-pickerEndDate.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
-    @Override
-    public void onDateChanged(DatePicker datePicker, int i, int i1, int i2) {
-       endDay= i2;
-        endMonth=i1;
-        endYear=i;
-        calendar.set(endYear, endMonth, endDay);
-
-        sdf = new SimpleDateFormat("dd-MM-yyyy");
-        formattedDate = sdf.format(calendar.getTime());
-        ParsePosition pos = new ParsePosition(0);
-
-       endDate=sdf.parse(formattedDate,pos);
-    }
-});
-
-    String[] items= getResources().getStringArray(R.array.trip_type);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,R.layout.activity_add_trip,items){
+        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
-            public boolean isEnabled(int position) {
-                return position!=0;
-
-            }
-
-            @Override
-            public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-              TextView view= (TextView) super.getDropDownView(position,convertView,parent);
-              if (position==0)
-                  view.setTextColor(Color.GRAY);
-
-              else
-              {
-
-              }
-            return view;
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
             }
         };
+        pickerStartDate.setOnClickListener(new View.OnClickListener() {
 
-        arrayAdapter.setDropDownViewResource(R.layout.activity_add_trip);
-        tripType.setAdapter(arrayAdapter);
-        tripType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                new DatePickerDialog(AddTripActivity.this, date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                sdf = new SimpleDateFormat("dd-MM-yyyy");
+       formattedDate = sdf.format(myCalendar.getTime());
+        ParsePosition pos = new ParsePosition(0);
+
+         startDate=sdf.parse(formattedDate,pos) ;           }
+        });
+        pickerEndDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(AddTripActivity.this, date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                sdf = new SimpleDateFormat("dd-MM-yyyy");
+                formattedDate = sdf.format(myCalendar.getTime());
+                ParsePosition pos = new ParsePosition(0);
+
+                endDate=sdf.parse(formattedDate,pos) ;           }
+
+        });
+
+/// Initialize the drop down list fot the trip_type
+        ArrayAdapter<CharSequence>adapter=ArrayAdapter.createFromResource(this, R.array.trip_type, android.R.layout.simple_spinner_item);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+tripType.setAdapter(adapter);
+tripType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String items[]=getResources().getStringArray(R.array.trip_type);
             String value= adapterView.getItemAtPosition(i).toString();
-            if(value != items[0])
-                tripTypeText=value;
-
+            if(value!=items[0]) {
+                tripTypeText = value;
+            Log.d(TAG,"select:"+value);
+            }
 
             }
 
@@ -163,128 +136,60 @@ pickerEndDate.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
             }
         });
 
-        final int PICK_IMAGE = 100;
-
-imageView.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-
- choosePicture();
-        Intent photoPickerIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//        photoPickerIntent.setType("image/*");
-        try {
-            startActivityForResult(photoPickerIntent,PICK_IMAGE);
-        }
-    catch(Exception e)
-        {
-            Log.i("Error",e.toString());
-
-        }
-    }
-});
 
 
 
 // Create a new trip
-
         addTrip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /// Create object of trip
-                Trip trip = new Trip();
-                trip.setName(tripName.getText().toString());
-                trip.setPlace(tripPlaces.getText().toString());
-                trip.setStartDate(startDate);
-                trip.setEndDate(endDate);
-                tripTypeText=(tripTypeText!="")? tripTypeText: "Not Selected";
-                trip.setType(tripTypeText);
-                trip.setPrice((Long)(Long.parseLong(tripPrice.getText().toString())));
-                trip.setImage(ImageByte);
-                trip.setDescription(tripDescription.getText().toString());
-                trip.setDuration(tripDuration.getText().toString());
+                // # Validate the Edit Text not Empty
+                if(TextUtils.isEmpty(tripName.getText()))
+                    tripName.setError("Required Trip Name", getDrawable(R.drawable.required));
+                else if(TextUtils.isEmpty(tripDuration.getText()))
+                    tripDuration.setError("required",getDrawable(R.drawable.required));
+                else if (TextUtils.isEmpty(tripPlaces.getText()))
+                    tripPlaces.setError("required",getDrawable(R.drawable.required));
+                else {
+                    // # Create an object of type Trip will be send save it to firebase then send it to another activity;
 
-              /// Save the trip into firebase
-
-                Map<String, Object> trips = new HashMap<>();
-                trips.put("Name",trip.getName());
-                trips.put("Place",trip.getPlace());
-                trips.put("StartDate",trip.getStartDate());
-                trips.put("EndDate",trip.getEndDate());
-                trips.put("Type",trip.getType());
-                trips.put("Price",trip.getPrice());
-                trips.put("Image",trip.getImage());
-                trips.put("Duration",trip.getDuration());
-                trips.put("Description",trip.getDescription());
+                    // ### get the text of edit text then convert it to string using toString();
+                    Trip trip = new Trip();
+                    trip.setID(UUID.randomUUID().toString());
+                    trip.setName(tripName.getText().toString());
+                    trip.setDuration(tripDuration.getText().toString());
+                    trip.setPrice(Double.parseDouble(tripPrice.getText().toString()));
+                    trip.setDuration(tripDuration.getText().toString());
+                    trip.setPlace(tripPlaces.getText().toString());
+                    trip.setStartDate(startDate);
+                    trip.setEndDate(endDate);
+                    trip.setAgentId(Login.SignedInUser.getId());
 
 
 
+                    // ## Save the trip into firebase
 
 
+                    databaseReference.child(trip.getID()).setValue(trip);
 
 
-    }
+                    Intent intent = new Intent(getApplicationContext(),AddTripImage.class);
 
-    private void choosePicture() {
-        Intent intent= new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent,1);
+                    intent.putExtra("tripId",trip.getID());
+                    startActivity(intent);
+
+                }
 
 
     }
 
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (resultCode == RESULT_OK && requestCode == 100 && data!=null  && data.getData()!=null){
-            imageUri = data.getData();
-            imageView.setImageURI(imageUri);
-            uploadPicture();
-
-            getImageAsByteFromImageView(imageView);
-            imageView.setDrawingCacheEnabled(true);
-            imageView.buildDrawingCache();
-            Bitmap bitmap=((BitmapDrawable) imageView.getDrawable()).getBitmap();
-
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-             ImageByte = baos.toByteArray();
-                  }
-    }
-
-    private void uploadPicture() {
-
-    final ProgressDialog progressDialog= new ProgressDialog(this);
-    progressDialog.setTitle("Uploading image");
-    progressDialog.show();
-
-        final String randomKey= UUID.randomUUID().toString();
-
-        storageReference=storageReference.child("images/");
-
-    storageReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-        @Override
-        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-            Snackbar.make(findViewById(android.R.id.content),"Image Uploaded",Snackbar.LENGTH_SHORT).show();
-            progressDialog.dismiss();
-        }
-    }).addOnFailureListener(new OnFailureListener() {
-        @Override
-        public void onFailure(@NonNull Exception e) {
-            progressDialog.dismiss();
-Toast.makeText(getApplicationContext(),"The Image was not uploaded Exception"+e,Toast.LENGTH_SHORT).show();
-        }
-    }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-        @Override
-        public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-            double progressPercent=(100.00* snapshot.getBytesTransferred()/snapshot.getTotalByteCount());
-            progressDialog.setMessage("Percentage: "+(int) progressPercent+"%");
-        }
     });
-    }
+
 
     }
+
+    private void updateLabel() {
+    }
+
+
 }

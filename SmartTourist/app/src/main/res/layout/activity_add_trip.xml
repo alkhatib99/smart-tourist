@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+   android:layout_marginEnd="2dp"
+    android:layout_marginStart="2dp"
     android:background="@color/background"
     tools:context=".AddTripActivity">
 
@@ -21,15 +23,58 @@
 
     <EditText
         android:id="@+id/trip_name"
-        android:layout_width="383dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="161dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/button_back"
         android:ems="10"
-        android:hint="Enter Trip Name"
+        android:hint="Name"
         android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <EditText
+        android:id="@+id/trip_Places"
+        android:layout_width="161dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/button_back"
+        android:ems="10"
+        android:hint="Places"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toEndOf="@+id/trip_duration"
+        app:layout_constraintTop_toBottomOf="@+id/trip_price" />
+
+    <EditText
+        android:id="@+id/trip_duration"
+        android:layout_width="161dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_back"
+        android:ems="10"
+        android:hint="Duration"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/trip_name" />
+
+    <EditText
+        android:id="@+id/trip_price"
+        android:layout_width="158dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_back"
+        android:ems="10"
+        android:hint="Price"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/trip_name"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -39,55 +84,13 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.5" />
 
-    <EditText
-        android:id="@+id/trip_price"
-        android:layout_width="383dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/button_back"
-        android:ems="10"
-        android:hint="@string/enter_trip_price"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trip_name" />
-
-    <EditText
-        android:id="@+id/trip_duration"
-        android:layout_width="383dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/button_back"
-        android:ems="10"
-        android:hint="@string/enter_trip_duration_no_of_days"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trip_price" />
-
-    <EditText
-        android:id="@+id/trip_Places"
-        android:layout_width="383dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/button_back"
-        android:ems="10"
-        android:hint="@string/enter_the_places_covered_under_trip"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trip_duration" />
-
     <Button
         android:id="@+id/trip_add"
         android:layout_width="145dp"
         android:layout_height="48dp"
         android:layout_marginTop="23dp"
-        android:background="@drawable/round_button"
-        android:backgroundTint="#2B2B2B"
+        android:background="@drawable/button_back"
+        android:backgroundTint="@color/element_white"
         android:text="ADD trip"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -96,106 +99,82 @@
         app:layout_constraintVertical_bias="0.0" />
 
 
-    <DatePicker
-        android:id="@+id/start_date"
+    <EditText
+        android:id="@+id/startDateEditText"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="128dp"
-        android:background="@drawable/round_button"
-        android:backgroundTint="@color/element_white"
-        android:datePickerMode="calendar"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/register_editext_style"
+        android:clickable="false"
+        android:cursorVisible="false"
         android:endYear="2025"
-        android:foreground="@drawable/calendar"
-        android:headerBackground="@drawable/button_back"
-        android:startYear="2022"
-        app:layout_constraintEnd_toStartOf="@+id/end_date"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trip_Places" />
 
-    <DatePicker
-        android:id="@+id/end_date"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="132dp"
-        android:background="@drawable/round_button"
-        android:backgroundTint="@color/element_white"
-        android:endYear="2025"
+        android:focusable="false"
         android:foreground="@drawable/calendar"
         android:headerBackground="@drawable/button_back"
-        android:startYear="2022"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/trip_duration" />
+
+    <EditText
+        android:id="@+id/end_dateEditText"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="140dp"
+        android:clickable="false"
+        android:focusable="false"
+        android:background="@drawable/register_editext_style"
+        android:foreground="@drawable/calendar"
+        android:headerBackground="@drawable/button_back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/trip_Places" />
 
     <Spinner
         android:id="@+id/trip_type"
-        android:layout_width="329dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="48dp"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/register_editext_style"
         android:contentDescription="@string/hint_type"
         android:popupBackground="@drawable/field"
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/start_date" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="80dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="36dp"
-        android:background="@drawable/image_border"
-        android:src="@drawable/image"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trip_type" />
-
-    <TextView
-        android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="48dp"
-        android:text="@string/main_image"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/trip_type" />
+        app:layout_constraintTop_toBottomOf="@+id/startDateEditText" />
 
     <EditText
-        android:hint="@string/description"
         android:id="@+id/trip_description"
-        android:layout_width="319dp"
-        android:layout_height="109dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="334dp"
+        android:layout_height="114dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/register_editext_style"
         android:ems="10"
         android:gravity="start|top"
+        android:hint="@string/description"
         android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
+        app:layout_constraintTop_toBottomOf="@+id/trip_type" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="44dp"
         android:text="End Date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.472"
-        app:layout_constraintStart_toEndOf="@+id/end_date"
+        app:layout_constraintHorizontal_bias="0.211"
+        app:layout_constraintStart_toEndOf="@+id/end_dateEditText"
         app:layout_constraintTop_toBottomOf="@+id/trip_Places" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="44dp"
         android:text="Start Date"
-        app:layout_constraintStart_toEndOf="@+id/start_date"
-        app:layout_constraintTop_toBottomOf="@+id/trip_Places" />
+        app:layout_constraintStart_toEndOf="@+id/startDateEditText"
+        app:layout_constraintTop_toBottomOf="@+id/trip_duration" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
