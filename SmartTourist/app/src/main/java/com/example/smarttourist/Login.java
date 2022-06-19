@@ -20,6 +20,8 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,7 +38,7 @@ public static User SignedInUser=new User();
     Button loginBtn;
     TextView textView;
     DatabaseReference databaseReference;
-    Intent intent;
+//    Intent intent;
     RadioGroup radioRoleGroup;
     FirebaseDatabase firebaseDatabase;
     String role;
@@ -48,8 +50,8 @@ public static User SignedInUser=new User();
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        /// Hide ActionBar
+firebaseAuth=FirebaseAuth.getInstance();
+/// Hide ActionBar
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         ///////// Initialize content
@@ -219,16 +221,26 @@ Log.d(TAG,"OnCancel");
                           user.getEmail().equals(email) &&
                                   user.getPassword().equals(password))
                   {
+firebaseAuth.signInAnonymously().addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+    @Override
+    public void onSuccess(AuthResult authResult) {
+        Log.d(TAG,authResult.getCredential().toString());
+        Log.d(TAG,authResult.getUser().toString());
+
+    }
+});
                       Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_LONG).show();
                       Log.d(TAG,"---------Login Successful----------");
-                      SignedInUser=user;
+
+                      Login.SignedInUser=user;
+
                       startActivity(checkRole(role));
+
                       finish();
                   }
                   else
                   {
-                      Toast.makeText(Login.this,"Login UnSuccessful, Inputs not valid",Toast.LENGTH_LONG).show();
-                      Log.d(TAG,"Login UnSuccessful, Inputs not valid");
+//                      Log.d(TAG,"Login UnSuccessful, Inputs not valid");
 
                   }
               }
@@ -268,6 +280,7 @@ return ((isHasUpper)&&(isLengthValid));
     public static boolean isValidEmailAddress (String email,EditText email_Input){
 
         Log.d(TAG,"Check Email Valid");
+
             String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
             java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
             java.util.regex.Matcher m = p.matcher(email);

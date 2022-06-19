@@ -36,24 +36,26 @@
         android:id="@+id/findPlanButton"
         android:layout_width="118dp"
         android:layout_height="47dp"
-        android:layout_marginStart="144dp"
         android:layout_marginTop="196dp"
         android:background="@drawable/button_back"
-        android:text="Find A Plan"
+        android:text="Find A Trip"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
         tools:ignore="TouchTargetSizeCheck" />
 
     <Button
-        android:id="@+id/tripButton"
+        android:id="@+id/touristtripButton"
         android:layout_width="123dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="144dp"
+        android:layout_height="48dp"
         android:layout_marginTop="60dp"
         android:background="@drawable/button_back"
-        android:text="My Plans"
+        android:text="My Trips"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/findPlanButton" />
+        app:layout_constraintTop_toBottomOf="@+id/findPlanButton"
+        app:layout_constraintVertical_bias="0.122" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

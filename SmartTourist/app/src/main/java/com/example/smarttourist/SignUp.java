@@ -16,13 +16,9 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 public class SignUp extends AppCompatActivity {
@@ -31,9 +27,7 @@ public class SignUp extends AppCompatActivity {
     TextView signText;
     Intent signInIntent;
     FirebaseAuth firebaseAuth;
-    FirebaseUser firebaseUser;
     FirebaseDatabase firebaseDatabase;
-    FirebaseFirestore firebaseFirestore;
     DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,19 +62,20 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
+        /// Name, Email, Password, Sex are required*
 
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
                 ////Set Error for required fields.
-                if(TextUtils.isEmpty(email_Input.getText()))
+                if(TextUtils.isEmpty(email_Input.getText())) /// if(email_input.getText.toString().equals(""))
                     email_Input.setError("Email is required");
                 if(TextUtils.isEmpty(password_Input.getText()))
                     password_Input.setError("Password is required");
                 boolean isValidEmail=Login.isValidEmailAddress(email_Input.getText().toString(),email_Input), isValidPassword=Login.isValidPassword(password_Input.getText().toString(),password_Input);
-                Log.d(TAG,"isValidEmail"+isValidEmail);
-                Log.d(TAG,"isValidPassword"+isValidPassword);
+//                Log.d(TAG,"isValidEmail"+isValidEmail);
+//                Log.d(TAG,"isValidPassword"+isValidPassword);
 
                 if(TextUtils.isEmpty(username_Input.getText()))
                     username_Input.setError("Username is required");
@@ -112,9 +107,16 @@ isValidEmail&&
                             role,
                             health_condition.getText().toString()
                                     );
-                    Map<String, User> users = new HashMap<>();
-                    users.put(String.valueOf(UUID.randomUUID()),user);
-                                databaseReference.setValue(users);
+
+                    user.setId(UUID.randomUUID().toString());
+
+                    databaseReference.child(user.getId()).setValue(user);
+
+
+
+Intent in = new Intent(getApplicationContext(),MainActivity.class);
+startActivity(in);
+finish();
                 }
 
 

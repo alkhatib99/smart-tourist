@@ -2,11 +2,20 @@ package com.example.smarttourist;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Filter;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -30,12 +39,14 @@ public class TripActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 private ArrayList<Trip> tripArrayList;
+ImageButton searchButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trip);
-//
-        Recyclerview = findViewById(R.id.mRecyclerView);
+
+        searchButton= (ImageButton) findViewById(R.id.searchButton);
+      Recyclerview = findViewById(R.id.mRecyclerView);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         tripArrayList=new ArrayList<>();
@@ -58,13 +69,8 @@ private ArrayList<Trip> tripArrayList;
 
             }
         });
-        adapter = new TripAdapter(TripActivity.this,tripArrayList);
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(TripActivity.this);
 
-        Recyclerview.setLayoutManager(linearLayoutManager);
-
-        Recyclerview.setAdapter(adapter);
-    databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot snapshot) {
             Log.d(TAG,"Start Listening--------------------------------------");
@@ -92,7 +98,47 @@ private ArrayList<Trip> tripArrayList;
 
         }
     });
+        adapter = new TripAdapter(getApplicationContext(),tripArrayList);
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(TripActivity.this);
 
+        Recyclerview.setLayoutManager(linearLayoutManager);
+
+        Recyclerview.setAdapter(adapter);
+
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View popupView = inflater.inflate(R.layout.search_popup, null);
+                EditText budget = popupView.findViewById(R.id.budgetEditText);
+
+                int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+                int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                boolean focusable = true; // lets taps outside the popup also dismiss it
+                final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+                // show the popup window
+                // which view you pass in doesn't matter, it is only used for the window tolken
+                popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+
+                // dismiss the popup window when touched
+                popupView.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        popupWindow.dismiss();
+                        return true;
+                    }
+                });
+
+                Filter f = adapter.getFilter();
+                CharSequence d= budget.getText().toString();
+                f.filter(d);
+                adapter.notifyDataSetChanged();
+//                f.notifyAll();
+
+            }
+        });
 
 
 
